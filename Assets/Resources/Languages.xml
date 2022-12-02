@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Settings>
+    <meta>
+        <Name>Project</Name>
+        <version>1.0</version>
+        <language>Multilingual</language>	
+    </meta>
+  <group id="MenuPanel">
+        <string id="ExitButton">
+		    <text lang="en">Exit</text>
+			<text lang="ru">Выход</text>	
+        </string>
+        <string id="ContinueButton">
+		    <text lang="en">Continue</text>
+			<text lang="ru">Продолжить</text>	
+        </string>	
+  </group>	
+</Settings>
