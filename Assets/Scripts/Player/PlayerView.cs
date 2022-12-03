@@ -1,14 +1,22 @@
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(MeshRenderer), typeof(Player))]
 public class PlayerView : MonoBehaviour
 {
-    [SerializeField] private ScreenUiPanel _screenUiPanel;
+    // [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private Material _protectedMaterial;
     [SerializeField] private GameObject _smallCubesPlayer;
 
     private MeshRenderer _mesh;
     private Material _startMaterial;
+    private ScreenUiPanel _screenUiPanel;
+
+    [Inject]
+    public void Constructor(ScreenUiPanel screenUiPanel)
+    {
+        _screenUiPanel = screenUiPanel;
+    }
     
     private void OnEnable()
     {

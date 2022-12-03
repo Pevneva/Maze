@@ -1,13 +1,13 @@
 using System;
+using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 [RequireComponent(typeof(NavMeshBuilder), typeof(PlayerView))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private GameObject _finish;
     [SerializeField] private MazeSpawner _spawner;
-    [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private GameObject _winFx;
     [SerializeField] private TrailRenderer _trail;
 
@@ -16,10 +16,19 @@ public class Player : MonoBehaviour
     private bool _isInFinishEntered;
     private bool _isInTrapEntered;
     private PlayerView _playerView;
+    private ScreenUiPanel _screenUiPanel;
+    private Transform _finish;
 
     public event Action Revived;
     public event Action Setup;
     public event Action Won;
+
+    [Inject]
+    public void Constructor(ScreenUiPanel screenUiPanel, Transform finish)
+    {
+        _screenUiPanel = screenUiPanel;
+        _finish = finish;
+    }
 
     private void OnEnable()
     {
@@ -100,7 +109,7 @@ public class Player : MonoBehaviour
     private void SetDestination()
     {
         _agent.enabled = true;
-        _agent.SetDestination(_finish.transform.position);
+        _agent.SetDestination(_finish.position);
     }
 
     private void Win()
