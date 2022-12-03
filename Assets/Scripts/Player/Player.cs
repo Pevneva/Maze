@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _spawner.MazeSpawned += OnMazeSpawned;
         _playerView = GetComponent<PlayerView>();
+        _spawner.MazeSpawned += OnMazeSpawned;
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
         _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonOnPressed;
     }
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
         Invoke(nameof(Revive), ParamsController.Player.DELAY_AFTER_DIE);
     }
 
-    private void SetIsKinematic(bool isEnabled)
+    private void  SetIsKinematic(bool isEnabled)
     {
         Rigidbody[] rigidBodiesSmallCubes = GetComponentsInChildren<Rigidbody>();
         foreach (var rigidbodyItem in rigidBodiesSmallCubes)
@@ -143,9 +143,9 @@ public class Player : MonoBehaviour
 
     private void Revive()
     {
+        SetStartState();
         Revived?.Invoke();
         SetIsKinematic(true);
-        SetStartState();
         Invoke(nameof(SetDestination), ParamsController.Player.DELAY_BEFORE_MOVING);
     }
 }

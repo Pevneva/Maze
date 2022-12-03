@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Player))]
 public class SmallCubesCreator : MonoBehaviour
@@ -12,11 +13,16 @@ public class SmallCubesCreator : MonoBehaviour
     private float _bigCubeScale;
     private readonly Dictionary<GameObject, Vector3> _startPosition = new Dictionary<GameObject, Vector3>();
 
+    [Inject]
+    public void Construct(Player player)
+    {
+        _player = player;
+    }
+    
     private void OnEnable()
     {
-        _player = GetComponent<Player>();
         _player.Setup += CreateSmallCubes;
-        _player.Revived += SetupSmallCubes;
+        _player.Revived += SetupSmallCubes; 
     }
 
     private void CreateSmallCubes()
@@ -58,8 +64,8 @@ public class SmallCubesCreator : MonoBehaviour
     {
         foreach (var pair in _startPosition)
         {
-            pair.Key.transform.localPosition = pair.Value;
             pair.Key.transform.rotation = Quaternion.identity;
+            pair.Key.transform.localPosition = pair.Value;
         }
     }
 }
