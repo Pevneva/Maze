@@ -10,7 +10,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject _finishPanel;
     [SerializeField] private Player _player;
 
-    private void Awake()
+    public void Init()
     {
         _screenUiPanel.PauseButtonClicked += OnPauseClicked;
         _menuPanel.ContinueButtonClicked += OnContinueButtonClicked;
