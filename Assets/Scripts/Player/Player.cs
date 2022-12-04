@@ -143,9 +143,9 @@ public class Player : MonoBehaviour
 
     private void Revive()
     {
-        Revived?.Invoke();
         SetIsKinematic(true);
         SetStartState();
+        Revived?.Invoke();
         Invoke(nameof(SetDestination), ParamsController.Player.DELAY_BEFORE_MOVING);
     }
 }
