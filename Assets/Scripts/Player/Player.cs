@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _finish;
-    // [SerializeField] private MazeSpawner _spawner;
     [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private GameObject _winFx;
     [SerializeField] private TrailRenderer _trail;

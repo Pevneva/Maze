@@ -15,7 +15,7 @@ public class PlayerView : MonoBehaviour
         _mesh = GetComponent<MeshRenderer>();
         _startMaterial = _mesh.material;
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
-        _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonUnressed;
+        _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonUnpressed;
     }
 
     public void SetBigCubeEnabling(bool isEnabled)
@@ -33,7 +33,7 @@ public class PlayerView : MonoBehaviour
         _mesh.material = _protectedMaterial;
     }
 
-    private void OnShieldButtonUnressed()
+    private void OnShieldButtonUnpressed()
     {
         _mesh.material = _startMaterial;
     }

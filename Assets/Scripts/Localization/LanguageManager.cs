@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LanguageManager : MonoBehaviour
 {
-    public static LanguageType CurrentLanguage { get; set; }
+    private static LanguageType CurrentLanguage { get; set; }
 
     private static readonly XmlDocument _root = new XmlDocument();
 

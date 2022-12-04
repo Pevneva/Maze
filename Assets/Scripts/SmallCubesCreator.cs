@@ -19,7 +19,6 @@ public class SmallCubesCreator : MonoBehaviour
     
     private void OnEnable()
     {
-        // _player = GetComponent<Player>();
         _player.Setup += CreateSmallCubes;
         _player.Revived += SetupSmallCubes;
     }

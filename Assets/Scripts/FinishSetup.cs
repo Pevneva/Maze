@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FinishSetup : MonoBehaviour
 {
-    [SerializeField] private MazeSpawner _maze;
+    private MazeSpawner _maze;
+
+    public void Init(MazeSpawner maze)
+    {
+        _maze = maze;
+    }
     
     private void Start()
     {
@@ -20,6 +23,7 @@ public class FinishSetup : MonoBehaviour
     {
         int cellSize = ParamsController.Maze.CELL_SIZE;
         transform.localPosition =
-            new Vector3(cellSize * ParamsController.Maze.MAZE_WIDTH - cellSize / 2, transform.localPosition.y, cellSize * ParamsController.Maze.MAZE_HEIGHT - cellSize );
+            new Vector3(cellSize * ParamsController.Maze.MAZE_WIDTH - cellSize / 2, transform.localPosition.y,
+                cellSize * ParamsController.Maze.MAZE_HEIGHT - cellSize);
     }
 }

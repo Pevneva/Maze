@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2637743099712645297, guid: 80c6b107e80113646baaa939d9527454, type: 3}
   m_PrefabInstance: {fileID: 5412261152897668580}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &308350932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5412261153411254211, guid: 80c6b107e80113646baaa939d9527454, type: 3}
+  m_PrefabInstance: {fileID: 5412261152897668580}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef205447dfa7014ba6a9e5ad63a5692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &308654204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1180,7 @@ MonoBehaviour:
   _player: {fileID: 1150350770}
   _mazeSpawner: {fileID: 1476771618}
   _smallCubesCreator: {fileID: 1220004099}
+  _finishSetup: {fileID: 308350932}
 --- !u!4 &989666213
 Transform:
   m_ObjectHideFlags: 0
@@ -1391,38 +1403,18 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 212051923699580082, guid: 80c6b107e80113646baaa939d9527454, type: 3}
   m_PrefabInstance: {fileID: 5412261152897668580}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220004095}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a24c2ef7c06905142919c8c9f6534425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1220004095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5412261151917313201, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-  m_PrefabInstance: {fileID: 5412261152897668580}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1220004097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220004095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbca0f6bf9724e4b9856a1e5cc1d281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _screenUiPanel: {fileID: 1634169111}
-  _protectedMaterial: {fileID: 2100000, guid: 92690d42df588ef4bb8956f62785f0e1, type: 2}
-  _smallCubesPlayer: {fileID: 288614921}
 --- !u!114 &1220004099 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6237354437214372946, guid: 80c6b107e80113646baaa939d9527454, type: 3}
   m_PrefabInstance: {fileID: 5412261152897668580}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220004095}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d6bcd4c5df63f94e8390e91f3519b74, type: 3}
@@ -1922,7 +1914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef205447dfa7014ba6a9e5ad63a5692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maze: {fileID: 1476771618}
 --- !u!65 &1639461536
 BoxCollider:
   m_ObjectHideFlags: 0
