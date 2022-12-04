@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _finish;
-    [SerializeField] private MazeSpawner _spawner;
+    // [SerializeField] private MazeSpawner _spawner;
     [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private GameObject _winFx;
     [SerializeField] private TrailRenderer _trail;
@@ -16,15 +16,21 @@ public class Player : MonoBehaviour
     private bool _isInFinishEntered;
     private bool _isInTrapEntered;
     private PlayerView _playerView;
+    private MazeSpawner _mazeSpawner;
 
     public event Action Revived;
     public event Action Setup;
     public event Action Won;
 
+    public void Init(MazeSpawner mazeSpawner)
+    {
+        _mazeSpawner = mazeSpawner;
+    }
+    
     private void OnEnable()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _spawner.MazeSpawned += OnMazeSpawned;
+        _mazeSpawner.MazeSpawned += OnMazeSpawned;
         _playerView = GetComponent<PlayerView>();
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
         _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonOnPressed;
@@ -117,7 +123,7 @@ public class Player : MonoBehaviour
 
     private void RespawnMaze()
     {
-        _spawner.SpawnMaze();
+        _mazeSpawner.SpawnMaze();
     }
 
     private void Die(Trap trap)

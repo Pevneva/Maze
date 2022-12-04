@@ -12,9 +12,14 @@ public class SmallCubesCreator : MonoBehaviour
     private float _bigCubeScale;
     private readonly Dictionary<GameObject, Vector3> _startPosition = new Dictionary<GameObject, Vector3>();
 
+    public void Init(Player player)
+    {
+        _player = player;
+    }
+    
     private void OnEnable()
     {
-        _player = GetComponent<Player>();
+        // _player = GetComponent<Player>();
         _player.Setup += CreateSmallCubes;
         _player.Revived += SetupSmallCubes;
     }

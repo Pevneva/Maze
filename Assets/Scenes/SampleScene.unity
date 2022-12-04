@@ -123,19 +123,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!96 &199075547 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 6829677217090900779, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-  m_PrefabInstance: {fileID: 5412261152897668580}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &288614921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2637743099712645297, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-  m_PrefabInstance: {fileID: 5412261152897668580}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &308350929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5412261153411254214, guid: 80c6b107e80113646baaa939d9527454, type: 3}
   m_PrefabInstance: {fileID: 5412261152897668580}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &308654204
@@ -1176,6 +1166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiController: {fileID: 423118542}
+  _player: {fileID: 1150350770}
+  _mazeSpawner: {fileID: 1476771618}
+  _smallCubesCreator: {fileID: 1220004099}
 --- !u!4 &989666213
 Transform:
   m_ObjectHideFlags: 0
@@ -1424,6 +1417,17 @@ MonoBehaviour:
   _screenUiPanel: {fileID: 1634169111}
   _protectedMaterial: {fileID: 2100000, guid: 92690d42df588ef4bb8956f62785f0e1, type: 2}
   _smallCubesPlayer: {fileID: 288614921}
+--- !u!114 &1220004099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6237354437214372946, guid: 80c6b107e80113646baaa939d9527454, type: 3}
+  m_PrefabInstance: {fileID: 5412261152897668580}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220004095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6bcd4c5df63f94e8390e91f3519b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1261022264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,11 +2176,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1719645260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5575431984875268970, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-  m_PrefabInstance: {fileID: 5412261152897668580}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1880642742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5412261151421049543, guid: 80c6b107e80113646baaa939d9527454, type: 3}
@@ -2249,18 +2248,6 @@ PrefabInstance:
       propertyPath: _protectedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 92690d42df588ef4bb8956f62785f0e1, type: 2}
-    - target: {fileID: 212051923699580082, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-      propertyPath: _trail
-      value: 
-      objectReference: {fileID: 199075547}
-    - target: {fileID: 212051923699580082, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-      propertyPath: _winFx
-      value: 
-      objectReference: {fileID: 1719645260}
-    - target: {fileID: 212051923699580082, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-      propertyPath: _finish
-      value: 
-      objectReference: {fileID: 308350929}
     - target: {fileID: 212051923699580082, guid: 80c6b107e80113646baaa939d9527454, type: 3}
       propertyPath: _uiController
       value: 
@@ -2385,14 +2372,6 @@ PrefabInstance:
       propertyPath: _screenUiPanel
       value: 
       objectReference: {fileID: 1634169111}
-    - target: {fileID: 2896730991461985063, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-      propertyPath: _smallCubesPlayer
-      value: 
-      objectReference: {fileID: 288614921}
-    - target: {fileID: 2896730991461985063, guid: 80c6b107e80113646baaa939d9527454, type: 3}
-      propertyPath: _protectedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 92690d42df588ef4bb8956f62785f0e1, type: 2}
     - target: {fileID: 5412261151421049541, guid: 80c6b107e80113646baaa939d9527454, type: 3}
       propertyPath: m_Name
       value: MazeSpawner
