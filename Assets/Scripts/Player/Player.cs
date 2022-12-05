@@ -24,15 +24,18 @@ public class Player : MonoBehaviour
     public void Init(MazeSpawner mazeSpawner)
     {
         _mazeSpawner = mazeSpawner;
-    }
-    
-    private void OnEnable()
-    {
         _agent = GetComponent<NavMeshAgent>();
-        _mazeSpawner.MazeSpawned += OnMazeSpawned;
         _playerView = GetComponent<PlayerView>();
+        _mazeSpawner.MazeSpawned += OnMazeSpawned;
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
         _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonOnPressed;
+    }
+
+    private void OnDestroy()
+    {
+        _mazeSpawner.MazeSpawned -= OnMazeSpawned;
+        _screenUiPanel.ShieldButtonPressed -= OnShieldButtonPressed;
+        _screenUiPanel.ShieldButtonUnpressed -= OnShieldButtonOnPressed;
     }
 
     private void OnTriggerStay(Collider other)

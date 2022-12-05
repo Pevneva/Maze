@@ -1,13 +1,20 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMeshRebacker : MonoBehaviour
+public class NavMeshRebaker : MonoBehaviour
 {
-    [SerializeField] private MazeSpawner _spawner;
-    
-    void Start()
+    private MazeSpawner _spawner;
+
+    public void Init(MazeSpawner spawner)
     {
+        _spawner = spawner;
         _spawner.MazeSpawned += OnMazeSpawned;
+    }
+
+    private void OnDestroy()
+    {
+        _spawner.MazeSpawned -= OnMazeSpawned;
     }
 
     private void OnMazeSpawned()

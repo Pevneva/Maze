@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +16,14 @@ public class SmallCubesCreator : MonoBehaviour
     public void Init(Player player)
     {
         _player = player;
-    }
-    
-    private void OnEnable()
-    {
         _player.Setup += CreateSmallCubes;
         _player.Revived += SetupSmallCubes;
+    }
+
+    private void OnDestroy()
+    {
+        _player.Setup -= CreateSmallCubes;
+        _player.Revived -= SetupSmallCubes;
     }
 
     private void CreateSmallCubes()

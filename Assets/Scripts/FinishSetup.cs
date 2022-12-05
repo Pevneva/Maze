@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FinishSetup : MonoBehaviour
@@ -7,11 +8,12 @@ public class FinishSetup : MonoBehaviour
     public void Init(MazeSpawner maze)
     {
         _maze = maze;
-    }
-    
-    private void Start()
-    {
         _maze.MazeSpawned += OnMazeSpawned;
+    }
+
+    private void OnDestroy()
+    {
+        _maze.MazeSpawned -= OnMazeSpawned;
     }
 
     private void OnMazeSpawned()

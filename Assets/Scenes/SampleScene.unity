@@ -935,7 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4d24f1e56dcf64a9dd25fc132d6fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 1476771618}
 --- !u!1 &940499446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1180,8 @@ MonoBehaviour:
   _mazeSpawner: {fileID: 1476771618}
   _smallCubesCreator: {fileID: 1220004099}
   _finishSetup: {fileID: 308350932}
+  _navMeshRebaker: {fileID: 908581655}
+  _playerView: {fileID: 1220004104}
 --- !u!4 &989666213
 Transform:
   m_ObjectHideFlags: 0
@@ -1418,6 +1419,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d6bcd4c5df63f94e8390e91f3519b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1220004104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2896730991461985063, guid: 80c6b107e80113646baaa939d9527454, type: 3}
+  m_PrefabInstance: {fileID: 5412261152897668580}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbca0f6bf9724e4b9856a1e5cc1d281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1261022264

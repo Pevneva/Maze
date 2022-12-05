@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer), typeof(Player))]
@@ -9,13 +10,19 @@ public class PlayerView : MonoBehaviour
 
     private MeshRenderer _mesh;
     private Material _startMaterial;
-    
-    private void OnEnable()
+
+    public void Init()
     {
         _mesh = GetComponent<MeshRenderer>();
         _startMaterial = _mesh.material;
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
         _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonUnpressed;
+    }
+
+    private void OnDestroy()
+    {
+        _screenUiPanel.ShieldButtonPressed -= OnShieldButtonPressed;
+        _screenUiPanel.ShieldButtonUnpressed -= OnShieldButtonUnpressed;
     }
 
     public void SetBigCubeEnabling(bool isEnabled)
