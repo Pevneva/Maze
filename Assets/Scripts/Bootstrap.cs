@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Bootstrap : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private FinishSetup _finishSetup;
     [SerializeField] private NavMeshRebaker _navMeshRebaker;
     [SerializeField] private PlayerView _playerView;
-    
+
     private void Awake()
     {
         _navMeshRebaker.Init(_mazeSpawner);
