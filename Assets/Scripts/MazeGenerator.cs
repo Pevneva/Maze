@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MazeGenerator
@@ -17,29 +15,6 @@ public class MazeGenerator
                 {X = i, Y = j, IsTrap = false};
 
         RemoveRandomWallsWithBacktracker();
-    }
-
-    public bool GetLeftWallActivity(int i, int j)
-    {
-        return _maze[i, j].IsLeft;
-    }
-
-    public bool GetBottomWallActivity(int i, int j)
-    {
-        return _maze[i, j].IsBottom;
-    }
-
-    public bool GetTrapActivity(int i, int j)
-    {
-        return _maze[i, j].IsTrap;
-    }
-
-    public void GenerateTraps(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            GenerateRandomTrap();
-        }
     }
 
     private void RemoveRandomWallsWithBacktracker()
@@ -75,6 +50,29 @@ public class MazeGenerator
                 currentCell = visitableCells.Pop();
             }
         } while (visitableCells.Count > 0);
+    }
+
+    public bool GetLeftWallActivity(int i, int j)
+    {
+        return _maze[i, j].IsLeft;
+    }
+
+    public bool GetBottomWallActivity(int i, int j)
+    {
+        return _maze[i, j].IsBottom;
+    }
+
+    public bool GetTrapActivity(int i, int j)
+    {
+        return _maze[i, j].IsTrap;
+    }
+
+    public void GenerateTraps(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            GenerateRandomTrap();
+        }
     }
 
     private void RemoveWall(MazeGeneratorCell currentCell, MazeGeneratorCell nextCell)
@@ -119,24 +117,15 @@ public class MazeGenerator
         } while (randomCell.IsTrap != false || IsStartCell(randomX, randomY) || IsFinishCell(randomX, randomY));
 
         randomCell.IsTrap = true;
+        
+        bool IsStartCell( int x, int y)
+        {
+            return x == 0 && y == 0;
+        }
+        
+        bool IsFinishCell( int x, int y)
+        {
+            return x == _maze.GetLength(0) - 2 && y == _maze.GetLength(1) -2;
+        }
     }
-
-    private bool IsStartCell( int x, int y)
-    {
-        return x == 0 && y == 0;
-    }
-    private bool IsFinishCell( int x, int y)
-    {
-        return x == _maze.GetLength(0) - 2 && y == _maze.GetLength(1) -2;
-    }
-}
-
-public class MazeGeneratorCell
-{
-    public int X;
-    public int Y;
-    public bool IsLeft = true;
-    public bool IsBottom = true;
-    public bool IsVisited;
-    public bool IsTrap;
 }

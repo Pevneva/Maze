@@ -1,29 +1,28 @@
+using System;
 using UnityEngine;
-using Zenject;
 
 [RequireComponent(typeof(MeshRenderer), typeof(Player))]
 public class PlayerView : MonoBehaviour
 {
-    // [SerializeField] private ScreenUiPanel _screenUiPanel;
+    [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private Material _protectedMaterial;
     [SerializeField] private GameObject _smallCubesPlayer;
 
     private MeshRenderer _mesh;
     private Material _startMaterial;
-    private ScreenUiPanel _screenUiPanel;
 
-    [Inject]
-    public void Constructor(ScreenUiPanel screenUiPanel)
-    {
-        _screenUiPanel = screenUiPanel;
-    }
-    
-    private void OnEnable()
+    public void Init()
     {
         _mesh = GetComponent<MeshRenderer>();
         _startMaterial = _mesh.material;
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
-        _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonUnressed;
+        _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonUnpressed;
+    }
+
+    private void OnDestroy()
+    {
+        _screenUiPanel.ShieldButtonPressed -= OnShieldButtonPressed;
+        _screenUiPanel.ShieldButtonUnpressed -= OnShieldButtonUnpressed;
     }
 
     public void SetBigCubeEnabling(bool isEnabled)
@@ -41,7 +40,7 @@ public class PlayerView : MonoBehaviour
         _mesh.material = _protectedMaterial;
     }
 
-    private void OnShieldButtonUnressed()
+    private void OnShieldButtonUnpressed()
     {
         _mesh.material = _startMaterial;
     }

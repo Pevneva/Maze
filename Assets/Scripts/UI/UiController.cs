@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class UiController : MonoBehaviour
     [SerializeField] private GameObject _finishPanel;
     [SerializeField] private Player _player;
 
-    private void Awake()
+    public void Init()
     {
         _screenUiPanel.PauseButtonClicked += OnPauseClicked;
         _menuPanel.ContinueButtonClicked += OnContinueButtonClicked;
@@ -18,6 +19,13 @@ public class UiController : MonoBehaviour
         _menuPanel.gameObject.SetActive(false);
         _screenUiPanel.gameObject.SetActive(true);
         _finishPanel.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        _screenUiPanel.PauseButtonClicked -= OnPauseClicked;
+        _menuPanel.ContinueButtonClicked -= OnContinueButtonClicked;
+        _player.Won -= OnWon;
     }
 
     private void OnPauseClicked()

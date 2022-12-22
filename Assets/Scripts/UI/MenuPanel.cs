@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -18,7 +15,7 @@ public class MenuPanel : MonoBehaviour
     
     private void Start()
     {
-        _continueButton.onClick.AddListener(OnContunueClicked);
+        _continueButton.onClick.AddListener(OnContinueClicked);
         _exitButton.onClick.AddListener(OnExitClicked);
 
         InitializeLocalization();
@@ -38,7 +35,7 @@ public class MenuPanel : MonoBehaviour
         _continueButton.GetComponentInChildren<Text>().text = LanguageManager.Text(_menuPanelId, _continueButtonId);
     }
 
-    private void OnContunueClicked()
+    private void OnContinueClicked()
     {
         ContinueButtonClicked?.Invoke();
     }

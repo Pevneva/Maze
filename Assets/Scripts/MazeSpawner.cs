@@ -14,7 +14,7 @@ public class MazeSpawner : MonoBehaviour
     private GameObject[,] _cellsView;
     private MazeGenerator _generator;
 
-    private void Start()
+    public void Init()
     {
         InitializeMazeParameters();
         SpawnMaze(true);

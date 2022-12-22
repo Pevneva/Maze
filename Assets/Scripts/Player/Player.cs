@@ -1,13 +1,12 @@
 using System;
-using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.AI;
-using Zenject;
 
 [RequireComponent(typeof(NavMeshBuilder), typeof(PlayerView))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private MazeSpawner _spawner;
+    [SerializeField] private GameObject _finish;
+    [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private GameObject _winFx;
     [SerializeField] private TrailRenderer _trail;
 
@@ -16,27 +15,27 @@ public class Player : MonoBehaviour
     private bool _isInFinishEntered;
     private bool _isInTrapEntered;
     private PlayerView _playerView;
-    private ScreenUiPanel _screenUiPanel;
-    private Transform _finish;
+    private MazeSpawner _mazeSpawner;
 
     public event Action Revived;
     public event Action Setup;
     public event Action Won;
 
-    [Inject]
-    public void Constructor(ScreenUiPanel screenUiPanel, Transform finish)
+    public void Init(MazeSpawner mazeSpawner)
     {
-        _screenUiPanel = screenUiPanel;
-        _finish = finish;
-    }
-
-    private void OnEnable()
-    {
+        _mazeSpawner = mazeSpawner;
         _agent = GetComponent<NavMeshAgent>();
         _playerView = GetComponent<PlayerView>();
-        _spawner.MazeSpawned += OnMazeSpawned;
+        _mazeSpawner.MazeSpawned += OnMazeSpawned;
         _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
         _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonOnPressed;
+    }
+
+    private void OnDestroy()
+    {
+        _mazeSpawner.MazeSpawned -= OnMazeSpawned;
+        _screenUiPanel.ShieldButtonPressed -= OnShieldButtonPressed;
+        _screenUiPanel.ShieldButtonUnpressed -= OnShieldButtonOnPressed;
     }
 
     private void OnTriggerStay(Collider other)
@@ -109,7 +108,7 @@ public class Player : MonoBehaviour
     private void SetDestination()
     {
         _agent.enabled = true;
-        _agent.SetDestination(_finish.position);
+        _agent.SetDestination(_finish.transform.position);
     }
 
     private void Win()
@@ -126,7 +125,7 @@ public class Player : MonoBehaviour
 
     private void RespawnMaze()
     {
-        _spawner.SpawnMaze();
+        _mazeSpawner.SpawnMaze();
     }
 
     private void Die(Trap trap)
@@ -138,7 +137,7 @@ public class Player : MonoBehaviour
         Invoke(nameof(Revive), ParamsController.Player.DELAY_AFTER_DIE);
     }
 
-    private void  SetIsKinematic(bool isEnabled)
+    private void SetIsKinematic(bool isEnabled)
     {
         Rigidbody[] rigidBodiesSmallCubes = GetComponentsInChildren<Rigidbody>();
         foreach (var rigidbodyItem in rigidBodiesSmallCubes)
@@ -152,9 +151,9 @@ public class Player : MonoBehaviour
 
     private void Revive()
     {
+        SetIsKinematic(true);
         SetStartState();
         Revived?.Invoke();
-        SetIsKinematic(true);
         Invoke(nameof(SetDestination), ParamsController.Player.DELAY_BEFORE_MOVING);
     }
 }
