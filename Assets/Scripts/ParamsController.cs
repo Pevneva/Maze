@@ -3,9 +3,9 @@ public static class ParamsController
     public static class Maze
     {
         public const int CELL_SIZE = 20;
-        public const int MAZE_WIDTH = 12;
-        public const int MAZE_HEIGHT = 9;
-        public const int TRAPS_AMOUNT = 4;
+        public const int MAZE_WIDTH = 3;
+        public const int MAZE_HEIGHT = 3;
+        public const int TRAPS_AMOUNT = 0;
     }
 
     public static class Player

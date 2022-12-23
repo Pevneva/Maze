@@ -6,6 +6,7 @@ public class Mediator : MonoBehaviour
     [Required] public UiController UiController;
     [Required] public Player Player;
 
+    [Button, DisableInEditorMode] public void PlayerWon() => UiController.ShowFinishPanel();
     [Button, DisableInEditorMode] public void OnClickContinueButton() => UiController.OnContinueButtonClicked();
     [Button, DisableInEditorMode] public void OnClickPauseButton() => UiController.OnPauseClicked();
     [Button, DisableInEditorMode] public void OnClickExitButton() => Application.Quit();

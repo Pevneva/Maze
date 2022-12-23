@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _finish;
     [SerializeField] private GameObject _winFx;
     [SerializeField] private TrailRenderer _trail;
+    [SerializeField] private Mediator _mediator;
 
     private NavMeshAgent _agent;
     private bool _isProtected;
@@ -18,7 +19,6 @@ public class Player : MonoBehaviour
 
     public event Action Revived;
     public event Action Setup;
-    public event Action Won;
 
     public void Init(MazeSpawner mazeSpawner)
     {
@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
 
     private void StartFading()
     {
-        Won?.Invoke();
+        _mediator.PlayerWon();
     }
 
     private void RespawnMaze()
