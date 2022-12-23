@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer), typeof(Player))]
 public class PlayerView : MonoBehaviour
 {
-    [SerializeField] private ScreenUiPanel _screenUiPanel;
     [SerializeField] private Material _protectedMaterial;
     [SerializeField] private GameObject _smallCubesPlayer;
 
@@ -15,14 +14,6 @@ public class PlayerView : MonoBehaviour
     {
         _mesh = GetComponent<MeshRenderer>();
         _startMaterial = _mesh.material;
-        _screenUiPanel.ShieldButtonPressed += OnShieldButtonPressed;
-        _screenUiPanel.ShieldButtonUnpressed += OnShieldButtonUnpressed;
-    }
-
-    private void OnDestroy()
-    {
-        _screenUiPanel.ShieldButtonPressed -= OnShieldButtonPressed;
-        _screenUiPanel.ShieldButtonUnpressed -= OnShieldButtonUnpressed;
     }
 
     public void SetBigCubeEnabling(bool isEnabled)
@@ -35,12 +26,12 @@ public class PlayerView : MonoBehaviour
         _smallCubesPlayer.SetActive(isEnabled);
     }
 
-    private void OnShieldButtonPressed()
+    public void SetProtectedColor()
     {
         _mesh.material = _protectedMaterial;
     }
 
-    private void OnShieldButtonUnpressed()
+    public void SetUsualColor()
     {
         _mesh.material = _startMaterial;
     }

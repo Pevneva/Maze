@@ -1,22 +1,20 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MenuPanel : MonoBehaviour
 {
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _exitButton;
-
-    public event UnityAction ContinueButtonClicked;
-
+    [SerializeField] private Mediator _mediator;
+    
     private string _menuPanelId; 
     private string _exitButtonId;
     private string _continueButtonId;
     
     private void Start()
     {
-        _continueButton.onClick.AddListener(OnContinueClicked);
-        _exitButton.onClick.AddListener(OnExitClicked);
+        _continueButton.onClick.AddListener(_mediator.OnClickContinueButton);
+        _exitButton.onClick.AddListener(_mediator.OnClickExitButton);
 
         InitializeLocalization();
         SetLocalizationText();
@@ -33,15 +31,5 @@ public class MenuPanel : MonoBehaviour
     {
         _exitButton.GetComponentInChildren<Text>().text = LanguageManager.Text(_menuPanelId, _exitButtonId);
         _continueButton.GetComponentInChildren<Text>().text = LanguageManager.Text(_menuPanelId, _continueButtonId);
-    }
-
-    private void OnContinueClicked()
-    {
-        ContinueButtonClicked?.Invoke();
-    }
-
-    private void OnExitClicked()
-    {
-        Application.Quit();
     }
 }

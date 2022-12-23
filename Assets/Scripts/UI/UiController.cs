@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,8 +12,6 @@ public class UiController : MonoBehaviour
 
     public void Init()
     {
-        _screenUiPanel.PauseButtonClicked += OnPauseClicked;
-        _menuPanel.ContinueButtonClicked += OnContinueButtonClicked;
         _player.Won += OnWon;
         _menuPanel.gameObject.SetActive(false);
         _screenUiPanel.gameObject.SetActive(true);
@@ -23,19 +20,17 @@ public class UiController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _screenUiPanel.PauseButtonClicked -= OnPauseClicked;
-        _menuPanel.ContinueButtonClicked -= OnContinueButtonClicked;
         _player.Won -= OnWon;
     }
 
-    private void OnPauseClicked()
+    public void OnPauseClicked()
     {
         Time.timeScale = 0;
         _menuPanel.gameObject.SetActive(true);
         _screenUiPanel.gameObject.SetActive(false);
     }
 
-    private void OnContinueButtonClicked()
+    public void OnContinueButtonClicked()
     {
         Time.timeScale = 1;
         _menuPanel.gameObject.SetActive(false);
